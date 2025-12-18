@@ -1,4 +1,4 @@
 
-module "ansible" {
-  source = "./module/ansible"
+module "vpc_peering" {
+  source = "./module/vpc-peering"
 }
