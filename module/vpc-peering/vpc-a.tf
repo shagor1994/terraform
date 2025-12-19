@@ -77,3 +77,32 @@ output "instance_a_public_ip" {
   value = aws_instance.instance_a.public_ip
 }
 
+resource "aws_vpc_peering_connection" "peer" {
+  vpc_id      = aws_vpc.vpc_a.id
+  peer_vpc_id = aws_vpc.vpc_b.id
+  peer_region = "us-east-1" # Fixed: was east-us-1
+
+  tags = {
+    Name = "vpc-a-to-vpc-b-peering"
+  }
+}
+
+# Accept the peering connection in us-east-1
+resource "aws_vpc_peering_connection_accepter" "peer_accepter" {
+  provider                  = aws.us_east_1
+  vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
+  auto_accept               = true
+
+  tags = {
+    Name = "vpc-b-accept-peering"
+  }
+}
+
+# Add route to VPC B in VPC A's route table
+resource "aws_route" "route_to_vpc_b" {
+  route_table_id            = aws_route_table.route_table_a.id
+  destination_cidr_block    = "10.1.0.0/16"
+  vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
+
+  depends_on = [aws_vpc_peering_connection_accepter.peer_accepter]
+}
