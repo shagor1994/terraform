@@ -1,19 +1,20 @@
 resource "aws_vpc" "vpc_b" {
+  provider   = aws.us_east_1
   cidr_block = "10.1.0.0/16"
-  region     = "us_east_1"
   tags = {
     Name = "VPC-B"
   }
 }
 
 resource "aws_subnet" "private_subnet_b" {
+  provider          = aws.us_east_1
   vpc_id            = aws_vpc.vpc_b.id
   cidr_block        = "10.1.0.0/24"
   availability_zone = "us-east-1a"
 }
 
 resource "aws_route_table" "route_table_b" {
-  provider = "us_east_1"
+  provider = aws.us_east_1
   vpc_id   = aws_vpc.vpc_b.id
 
   # allow traffic from vpc a
@@ -28,11 +29,12 @@ resource "aws_route_table" "route_table_b" {
 }
 
 resource "aws_route_table_association" "route_table_association_b" {
+  provider       = aws.us_east_1
   route_table_id = aws_route_table.route_table_b.id
   subnet_id      = aws_subnet.private_subnet_b.id
 }
 resource "aws_instance" "instance_b" {
-  provider      = "us_east_1"
+  provider      = aws.us_east_1
   ami           = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (us-east-1)
   instance_type = "t3.nano"
   subnet_id     = aws_subnet.private_subnet_b.id
@@ -46,7 +48,7 @@ resource "aws_instance" "instance_b" {
 
 # security group for VPC B
 resource "aws_security_group" "sg_b" {
-  provider    = "us_east_1"
+  provider    = aws.us_east_1
   description = "Security group for VPC B"
   vpc_id      = aws_vpc.vpc_b.id # Fixed: was vpc_a
 
