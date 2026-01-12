@@ -16,3 +16,10 @@ variable "aws_secret_key" {
   type        = string
   sensitive   = true
 }
+
+
+variable "account_id" {
+  description = "The AWS account ID"
+  type        = string
+
+}
