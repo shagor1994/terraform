@@ -1,0 +1,16 @@
+terraform/
+├── modules/
+│   └── vpc/
+│       ├── vpc.tf
+│       ├── subnets.tf
+│       ├── routes.tf
+│       ├── igw.tf
+│       ├── nat.tf
+│       ├── endpoints.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│
+└── envs/
+    ├── dev/
+    ├── staging/
+    └── prod/
