@@ -1,0 +1,4 @@
+1. Define the Transit Gateway
+2. Create VPC attachments to vpc & subnets
+3. Configure Transit Gateway Route Table (Propagation & Association)
+4. Update VPC Route Tables 
