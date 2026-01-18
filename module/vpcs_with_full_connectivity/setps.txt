@@ -2,3 +2,13 @@
 2. Create VPC attachments to vpc & subnets
 3. Configure Transit Gateway Route Table (Propagation & Association)
 4. Update VPC Route Tables 
+
+
+1. Create 3 VPCs and corresponding private subnets. For VPC A –
+additionally create a Public Subnet (we need that for jump host)
+2. Create Transit Gateway
+3. 4. Create 3 VPC attachments for the Transit Gateway
+Modify all Private subnet route table and add route for 10.0.0.0/8 via
+the Transit gateway attachment
+5. SSH to VPC A Jump host -> SSH to EC2-A -> Ping to EC2-B or EC2-
+C using a Private IP

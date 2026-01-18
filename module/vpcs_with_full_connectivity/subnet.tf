@@ -5,7 +5,7 @@ resource "aws_subnet" "subnet_a" {
   cidr_block = "10.0.0.0/24"
 
   tags = {
-    "name" : "subnet-a"
+    "Name" : "subnet-a"
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "subnet_b" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    "name" : "subnet-b"
+    "Name" : "subnet-b"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_subnet" "subnet_c" {
   cidr_block = "10.1.0.0/24"
 
   tags = {
-    "name" : "subnet-c"
+    "Name" : "subnet-c"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "subnet_d" {
   cidr_block = "10.2.0.0/24"
 
   tags = {
-    "name" : "subnet-d"
+    "Name" : "subnet-d"
   }
 }
 
