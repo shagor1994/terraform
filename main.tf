@@ -1,4 +1,4 @@
 
 module "nat_instance" {
-  source = "./module/vpcs_with_full_connectivity"
+  source = "./module/transit_gateway_attachment_specific_routing/"
 }

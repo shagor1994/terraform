@@ -1,8 +1,8 @@
 #transit gateway
 resource "aws_ec2_transit_gateway" "tgw" {
   description = "example transit gateway"
-  default_route_table_association = false
-  default_route_table_propagation = false
+  default_route_table_association = "disable"
+  default_route_table_propagation = "disable"
   tags = {
     Name = "example-tgw"
   }
@@ -37,5 +37,3 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_vpc_c_attachment" {
     Name = "tgw-vpc-c-attachment"
   }
 }
-
-
