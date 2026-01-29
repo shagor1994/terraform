@@ -3,6 +3,6 @@
 #   source = "./module/nat-instance"
 # }
 
-module "private_hosted_zone" {
-  source = "./module/private-hosted-zone"
+module "dsn_dhcp" {
+  source = "./module/custom-dns-server"
 }
